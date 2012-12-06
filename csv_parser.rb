@@ -20,13 +20,13 @@ class CsvParser
     return final_array
   end
 
-  def self.run! filename
+  def self.run! filename destination_file
     arrays = read! filename
-    hash_file = to_json(arrays)
-    File.open("temp.json", "w") do |f|
-      f.write(hash_file.to_json)
+    hash_names = to_json(arrays)
+    File.open("#{destination_file}.json", "w") do |f|
+      f.write(hash_names.to_json)
     end
   end
 end
 
-CsvParser.run! ARGV[0]
+CsvParser.run! ARGV[0] ARGV[1]
