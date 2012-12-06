@@ -1,4 +1,5 @@
 require 'csv'
+require 'json'
 class CsvParser
 #Hash[*keys.zip(data).flatten]
   def self.read! filename
@@ -18,4 +19,14 @@ class CsvParser
     end
     return final_array
   end
+
+  def self.run! filename
+    arrays = read! filename
+    hash_file = to_json(arrays)
+    File.open("temp.json", "w") do |f|
+      f.write(hash_file.to_json)
+    end
+  end
 end
+
+CsvParser.run! ARGV[0]
