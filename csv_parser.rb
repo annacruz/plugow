@@ -1,10 +1,11 @@
 require 'csv'
 require 'json'
+
 class CsvParser
-#Hash[*keys.zip(data).flatten]
+
   def self.read! filename
     elements_array = []
-    CSV.foreach(filename) do |row|
+    CSV.parse(filename) do |row|
       elements_array.push row
     end
     return elements_array
@@ -29,4 +30,4 @@ class CsvParser
   end
 end
 
-CsvParser.run! ARGV[0], ARGV[1]
+# CsvParser.run! ARGV[0], ARGV[1]
