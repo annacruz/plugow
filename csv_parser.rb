@@ -5,7 +5,7 @@ class CsvParser
 
   def self.read! filename
     elements_array = []
-    CSV.parse(filename) do |row|
+    CSV.foreach(filename) do |row|
       elements_array.push row
     end
     return elements_array
