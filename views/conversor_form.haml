@@ -1,5 +1,9 @@
 !!!5
-%form(method="post" enctype='multipart/form-data')   
-  %input(type='file' name='csv_file')    
+%form{:action => "", :method => "post", :enctype => "multipart/form-data"}
+  %label{:for => "csv_file"}File:
+  %input{:type =>"file", :name => "csv_file"}
   %br
-  %input(type='submit' value='Upload!')
+  %label{:for => "destination"}Uploaded name:
+  %input{:type => "text", :name => "destination"}
+  %br
+  %input{:type => "submit", :value => "Upload!"}
