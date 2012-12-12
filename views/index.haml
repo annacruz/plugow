@@ -4,6 +4,8 @@
     %title RailsGirls Jsons
   %body
     %h3
-      Selecione o arquivo que deseja visualizar:
+      Select the json you wanna see:
       %p<
-        %a(href = 'subscriptions.json') Inscrições
+        - @filenames.each do |file|
+          %a{:href => "#{file}"} #{file.split('.json')[0].capitalize!}
+          

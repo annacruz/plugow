@@ -5,6 +5,11 @@ require './csv_parser'
 require 'sinatra/reloader' if development?
 
 get '/' do
+  temp_filenames = []
+  Dir.foreach('./public/') do |filename|
+    temp_filenames.push(filename)
+  end
+  @filenames = temp_filenames.reject!{|f| f.each_char.first == '.'}
   haml :index
 end
 
