@@ -8,11 +8,11 @@ get '/' do
   haml :index
 end
 
-get '/test' do
+get '/conversor' do
   haml :conversor_form
 end
 
-post '/test' do
-  item = CsvParser.read! params['csv_file'][:tempfile]
-  "#{item}"
+post '/conversor' do
+  CsvParser.run! params['csv_file'][:tempfile], "public/#{params['destination']}"
+  redirect "#{params['destination']}.json"
 end
