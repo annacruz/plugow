@@ -9,7 +9,7 @@ get '/' do
   Dir.foreach('./public/') do |filename|
     temp_filenames.push(filename)
   end
-  @filenames = temp_filenames.reject!{|f| f.each_char.first == '.'}
+  @filenames = temp_filenames.reject!{|f| f.each_char.first == '.' || f =~ /teste/}
   haml :index
 end
 
