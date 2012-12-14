@@ -19,5 +19,5 @@ end
 
 post '/conversor' do
   CsvParser.run! params['csv_file'][:tempfile], "public/#{params['destination']}"
-  redirect "#{params['destination']}.json"
+  redirect '/'
 end
